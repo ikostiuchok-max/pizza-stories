@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenwood Pizza Stories — AI Campaign Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --linen:    #F2EDE4;
+    --sand:     #E8E0D4;
+    --sage:     #D4DDD8;
+    --blue:     #7B9EAD;
+    --espresso: #3A3530;
+    --muted:    #7A7068;
+    --faint:    rgba(58,53,48,0.18);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans:  'Inter', -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--linen);color:var(--espresso);font-family:var(--sans);overflow-x:hidden;}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}
+  }
+
+  /* ── HERO ── */
+  .hero{
+    min-height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    padding:clamp(64px,10vh,120px) clamp(24px,6vw,80px) clamp(48px,8vh,100px);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, #F2EDE4 0%, #E8E0D4 50%, #D4DDD8 100%);
+    z-index:0;
+  }
+  .hero-inner{position:relative;z-index:1;max-width:900px;}
+  .hero-label{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:20px;
+    opacity:0;
+    animation:fadeUp 1s ease forwards 0.2s;
+  }
+  .hero-kenwood{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:clamp(13px,1.4vw,18px);
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:#9BA89E;
+    opacity:0;
+    animation:fadeUp 1.1s ease forwards 0.3s;
+    margin-bottom:8px;
+  }
+  .hero h1{
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:clamp(52px,9vw,130px);
+    line-height:0.95;
+    color:var(--espresso);
+    opacity:0;
+    animation:fadeUp 1.1s ease forwards 0.4s;
+  }
+  .hero h1 em{
+    font-weight:700;
+    font-style:normal;
+    display:block;
+    font-size:0.75em;
+  }
+  .hero-sub{
+    margin-top:28px;
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:clamp(13px,1.4vw,18px);
+    letter-spacing:0.04em;
+    color:var(--muted);
+    opacity:0;
+    animation:fadeUp 1.1s ease forwards 0.65s;
+  }
+  .hero-rule{
+    margin-top:40px;
+    width:48px;
+    height:1px;
+    background:var(--blue);
+    opacity:0;
+    animation:fadeUp 1s ease forwards 0.85s;
+  }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* ── CHAPTER ── */
+  .chapter{
+    padding:clamp(80px,12vh,140px) clamp(24px,6vw,80px);
+    max-width:1440px;
+    margin:0 auto;
+  }
+  .chapter-num{
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:clamp(13px,1.4vw,18px);
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--blue);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:24px;
+  }
+  .chapter-num::after{
+    content:"";
+    height:1px;
+    width:80px;
+    background:var(--faint);
+  }
+  .chapter-title{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:clamp(22px,2.8vw,36px);
+    line-height:1.2;
+    color:var(--espresso);
+    max-width:700px;
+    margin-bottom:20px;
+  }
+  .chapter-copy{
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:clamp(14px,1.4vw,17px);
+    line-height:1.75;
+    color:var(--muted);
+    max-width:560px;
+    margin-bottom:clamp(40px,6vh,72px);
+  }
+
+  /* ── SPLIT: text left, video right ── */
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(32px,5vw,72px);
+    align-items:center;
+  }
+  .split .text-col{display:flex;flex-direction:column;}
+  .split .media-col{display:flex;justify-content:center;}
+  @media(max-width:900px){
+    .split{grid-template-columns:1fr;}
+    .split .media-col{order:-1;}
+  }
+
+  /* ── VIDEO BLOCK ── */
+  .video-wrap{
+    width:100%;
+    border-radius:12px;
+    overflow:hidden;
+    background:var(--sand);
+  }
+  .video-wrap video{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .video-label{
+    display:flex;
+    justify-content:space-between;
+    margin-top:12px;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .video-label .vl-title{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:14px;
+    letter-spacing:0.02em;
+    text-transform:none;
+    color:var(--espresso);
+  }
+
+  .img-grid-mixed{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:clamp(10px,1.4vw,18px);
+    margin-top:clamp(32px,5vh,56px);
+    align-items:start;
+  }
+  .img-grid-mixed .col{display:flex;flex-direction:column;gap:clamp(10px,1.4vw,18px);}
+  .img-grid-mixed figure{
+    margin:0;
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--sand);
+  }
+  .img-grid-mixed figure img{
+    display:block;
+    width:100%;
+    height:auto;
+    transition:transform 1.4s cubic-bezier(0.2,0.7,0.2,1);
+  }
+  .img-grid-mixed figure:hover img{transform:scale(1.03);}
+  @media(max-width:640px){.img-grid-mixed{grid-template-columns:1fr;}}
+
+  /* ── IMAGE GRID 2 — smaller, centred ── */
+  .img-grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(10px,1.4vw,18px);
+    margin-top:clamp(32px,5vh,56px);
+    max-width:680px;
+  }
+  .img-grid-2 figure{
+    margin:0;
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--sand);
+  }
+  .img-grid-2 figure img{
+    display:block;
+    width:100%;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    object-position:center;
+    transition:transform 1.4s cubic-bezier(0.2,0.7,0.2,1);
+  }
+  .img-grid-2 figure:hover img{transform:scale(1.03);}
+  @media(max-width:640px){.img-grid-2{grid-template-columns:1fr;}}
+
+  /* ── IMAGE GRID 3 ── */
+  .img-grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(10px,1.4vw,18px);
+    margin-top:clamp(32px,5vh,56px);
+  }
+  .img-grid-3 figure{
+    margin:0;
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--sand);
+  }
+  .img-grid-3 figure img{
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:cover;
+    transition:transform 1.4s cubic-bezier(0.2,0.7,0.2,1);
+  }
+  .img-grid-3 figure:hover img{transform:scale(1.03);}
+  @media(max-width:640px){.img-grid-3{grid-template-columns:1fr;}}
+
+  /* ── CHAPTER 05 GRID ── */
+  .ch05-grid{ display:flex; flex-direction:column; gap:clamp(10px,1.4vw,18px); margin-top:clamp(32px,5vh,56px); }
+  .ch05-row-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(10px,1.4vw,18px); }
+  .ch05-row-2{ display:grid; grid-template-columns:1.6fr 1fr; gap:clamp(10px,1.4vw,18px); align-items:start; }
+  .ch05-grid figure{ margin:0; border-radius:10px; overflow:hidden; background:var(--sand); }
+  .ch05-grid figure img{ display:block; width:100%; height:auto; transition:transform 1.4s cubic-bezier(0.2,0.7,0.2,1); }
+  .ch05-grid figure:hover img{ transform:scale(1.03); }
+  @media(max-width:640px){
+    .ch05-row-3,.ch05-row-2{ grid-template-columns:1fr; }
+  }
+
+  /* ── ABOUT ── */
+  .about-section{
+    padding:clamp(80px,12vh,140px) clamp(24px,6vw,80px);
+    max-width:1440px;
+    margin:0 auto;
+  }
+  .about-inner{max-width:720px;}
+  .about-rule{width:40px;height:1px;background:var(--blue);margin-bottom:36px;}
+  .about-body{
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:clamp(16px,1.6vw,20px);
+    line-height:1.75;
+    color:var(--espresso);
+    margin-bottom:28px;
+  }
+  .about-disclaimer{
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:12px;
+    letter-spacing:0.04em;
+    line-height:1.7;
+    color:var(--muted);
+    border-left:1px solid var(--faint);
+    padding-left:16px;
+  }
+
+  /* ── NEXT TEASER ── */
+    border-top:1px solid var(--faint);
+    margin-top:clamp(60px,10vh,120px);
+    padding:clamp(60px,10vh,120px) clamp(24px,6vw,80px) 0;
+    text-align:center;
+  }
+  .next-teaser .label{
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:16px;
+  }
+  .next-teaser h3{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:300;
+    font-size:clamp(22px,3vw,38px);
+    color:var(--muted);
+  }
+
+  /* ── FOOTER ── */
+  footer{
+    text-align:center;
+    padding:48px 24px 64px;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  footer span{color:var(--blue);}
+
+  /* ── REVEAL ── */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kenwood">Kenwood</div>
+    <h1><em>Pizza</em>Stories</h1>
+    <p class="hero-sub">AI Campaign Concept</p>
+    <div class="hero-rule"></div>
+  </div>
+</section>
+
+<main>
+
+  <!-- CHAPTER 01 -->
+  <section class="chapter" id="chapter-01">
+    <div class="split reveal">
+      <div class="text-col">
+        <div class="chapter-num">Bringing People Together</div>
+        <h2 class="chapter-title">Built around the idea that food is a shared experience.</h2>
+        <p class="chapter-copy">This concept explores how homemade pizza creates moments of togetherness. The focus is on warmth, connection and the simple joy of spending time with friends and family. Pizza becomes the reason to gather, bringing food, people and the Kenwood Pizza Oven together in one natural experience. The story captures the warmth and joy of spending time together.</p>
+      </div>
+      <div class="media-col">
+        <div style="width:100%">
+          <div class="video-wrap">
+            <video poster="assets/chapter01_poster.jpg" controls playsinline preload="metadata">
+              <source src="assets/chapter01_video.mp4" type="video/mp4">
+              Your browser does not support video playback. <a href="assets/chapter01_video.mp4">Download the video</a> instead.
+            </video>
+          </div>
+          <div class="video-label">
+            <span class="vl-title">Film — Bringing People Together</span>
+            <span>00:10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="img-grid-3 reveal">
+      <figure>
+        <img src="assets/chapter01_img1.jpg" alt="Bringing People Together — image 1" loading="lazy">
+      </figure>
+      <figure>
+        <img src="assets/chapter01_img2.jpg" alt="Bringing People Together — image 2" loading="lazy">
+      </figure>
+      <figure>
+        <img src="assets/chapter01_img3.jpg" alt="Bringing People Together — image 3" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- CHAPTER 02 -->
+  <section class="chapter" id="chapter-02">
+    <div class="split reveal">
+      <div class="text-col">
+        <div class="chapter-num">Making It Together</div>
+        <h2 class="chapter-title">A shared ritual that brings generations together.</h2>
+        <p class="chapter-copy">This concept celebrates the joy of creating something together, where every pair of hands has a place in the experience. Homemade pizza becomes more than a meal – it is a shared ritual that brings generations together through anticipation, laughter and simple moments of collaboration. With the Kenwood Pizza Oven taking care of the cooking, everyone is free to enjoy the process, turning everyday preparation into a memory made together.</p>
+      </div>
+      <div class="media-col">
+        <div style="width:100%">
+          <div class="video-wrap">
+            <video poster="assets/chapter02_poster.jpg" controls playsinline preload="metadata">
+              <source src="assets/chapter02_video.mp4" type="video/mp4">
+              Your browser does not support video playback. <a href="assets/chapter02_video.mp4">Download the video</a> instead.
+            </video>
+          </div>
+          <div class="video-label">
+            <span class="vl-title">Film — Making It Together</span>
+            <span>00:12</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 03 -->
+  <section class="chapter" id="chapter-03">
+    <div class="split reveal">
+      <div class="text-col">
+        <div class="chapter-num">The First Slice</div>
+        <h2 class="chapter-title">The irresistible moment that everyone waits for.</h2>
+        <p class="chapter-copy">Freshly baked pizza brings people together in an instant, turning anticipation into a shared experience. The focus is on the simple excitement of reaching for the first slice, where conversation pauses and connection happens naturally. With the Kenwood Pizza Oven delivering authentic pizza effortlessly, every gathering begins with the same shared instinct—to dive in together.</p>
+      </div>
+      <div class="media-col">
+        <div style="width:100%">
+          <div class="video-wrap">
+            <video poster="assets/chapter03_poster.jpg" controls playsinline preload="metadata">
+              <source src="assets/chapter03_video.mp4" type="video/mp4">
+              Your browser does not support video playback. <a href="assets/chapter03_video.mp4">Download the video</a> instead.
+            </video>
+          </div>
+          <div class="video-label">
+            <span class="vl-title">Film — The First Slice</span>
+            <span>00:05</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="img-grid-2 reveal">
+      <figure>
+        <img src="assets/chapter03_img1.jpg" alt="The First Slice — image 1" loading="lazy">
+      </figure>
+      <figure>
+        <img src="assets/chapter03_img2.jpg" alt="The First Slice — image 2" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- CHAPTER 04 -->
+  <section class="chapter" id="chapter-04">
+    <div class="split reveal">
+      <div class="text-col">
+        <div class="chapter-num">A Taste of Tuscany</div>
+        <h2 class="chapter-title">Bringing the feeling of Italy a little closer to home.</h2>
+        <p class="chapter-copy">The warmth of the kitchen, the aroma of freshly baked pizza and the beauty of a simple meal come together to create a moment of escape. Inspired by the relaxed rhythm of Tuscany, the focus is on slowing down and enjoying authentic food without leaving home. With the Kenwood Pizza Oven making real pizza surprisingly easy, everyday cooking becomes a taste of somewhere special.</p>
+      </div>
+      <div class="media-col">
+        <div style="width:100%">
+          <div class="video-wrap">
+            <video poster="assets/chapter04_poster.jpg" controls playsinline preload="metadata">
+              <source src="assets/chapter04_video.mp4" type="video/mp4">
+              Your browser does not support video playback. <a href="assets/chapter04_video.mp4">Download the video</a> instead.
+            </video>
+          </div>
+          <div class="video-label">
+            <span class="vl-title">Film — A Taste of Tuscany</span>
+            <span>00:05</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="img-grid-3 reveal">
+      <figure>
+        <img src="assets/chapter04_img3.jpg" alt="A Taste of Tuscany — image 3" loading="lazy">
+      </figure>
+      <figure>
+        <img src="assets/chapter04_img1.jpg" alt="A Taste of Tuscany — image 1" loading="lazy">
+      </figure>
+      <figure>
+        <img src="assets/chapter04_img2.jpg" alt="A Taste of Tuscany — image 2" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- CHAPTER 05 -->
+  <section class="chapter" id="chapter-05">
+    <div class="reveal">
+      <div class="chapter-num">Switch On the Good Part</div>
+      <h2 class="chapter-title">The moment the day changes.</h2>
+      <p class="chapter-copy">A simple turn of a dial marks the shift from work to winding down, from turning off the laptop to turning on the pizza oven. Homemade pizza becomes the signal that it's time to slow down, connect and enjoy being together. With the Kenwood Pizza Oven making authentic pizza surprisingly easy, the focus moves away from preparation and towards enjoying the moments that matter — end of the day becomes the part everyone has been waiting for.</p>
+    </div>
+
+    <div class="ch05-grid reveal">
+      <div class="ch05-row-3">
+        <figure><img src="assets/chapter05_img1.jpg" alt="Switch On the Good Part — image 1" loading="lazy"></figure>
+        <figure><img src="assets/chapter05_img3.jpg" alt="Switch On the Good Part — image 3" loading="lazy"></figure>
+        <figure><img src="assets/chapter05_img4.jpg" alt="Switch On the Good Part — image 4" loading="lazy"></figure>
+      </div>
+      <div class="ch05-row-3">
+        <figure><img src="assets/chapter05_img5.jpg" alt="Switch On the Good Part — image 5" loading="lazy"></figure>
+        <figure><img src="assets/chapter05_img6.jpg" alt="Switch On the Good Part — image 6" loading="lazy"></figure>
+        <figure><img src="assets/chapter05_img7.jpg" alt="Switch On the Good Part — image 7" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 06 -->
+  <section class="chapter" id="chapter-06">
+    <div class="split reveal">
+      <div class="text-col">
+        <div class="chapter-num">The Best Part of Waiting</div>
+        <h2 class="chapter-title">Some moments are worth waiting for.</h2>
+        <p class="chapter-copy">The warmth of the oven, the glow from within and the aroma of freshly baking pizza turn anticipation into part of the experience. The focus is on the quiet excitement before the first bite, where even waiting becomes a moment to enjoy.</p>
+      </div>
+      <div class="media-col">
+        <div style="width:100%">
+          <div class="video-wrap">
+            <video poster="assets/chapter06_poster.jpg" controls playsinline preload="metadata">
+              <source src="assets/chapter06_video.mp4" type="video/mp4">
+              Your browser does not support video playback. <a href="assets/chapter06_video.mp4">Download the video</a> instead.
+            </video>
+          </div>
+          <div class="video-label">
+            <span class="vl-title">Film — The Best Part of Waiting</span>
+            <span>00:05</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="about-section reveal">
+  <div class="about-inner">
+    <div class="about-rule"></div>
+    <p class="about-body">Kenwood Pizza Oven is a conceptual AI advertising campaign featuring a series of creative concepts developed around homemade pizza and the moments it creates. The project combines AI-generated photography, AI video, and art direction to build a cohesive visual campaign.</p>
+    <p class="about-disclaimer">Disclaimer: This is a personal concept project created for portfolio purposes. It is not affiliated with, commissioned by, or endorsed by Kenwood.</p>
+  </div>
+</section>
+
+<footer>
+  Kenwood Pizza Stories <span>·</span> AI Campaign Concept <span>·</span> 2026
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:0.12});
+  reveals.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
